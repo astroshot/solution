@@ -27,17 +27,17 @@ public class AtomicFloat extends Number {
 
     @Override
     public final double doubleValue() {
-        return (double)floatValue();
+        return (double) floatValue();
     }
 
     @Override
     public final int intValue() {
-        return (int)floatValue();
+        return (int) floatValue();
     }
 
     @Override
     public final long longValue() {
-        return (long)floatValue();
+        return (long) floatValue();
     }
 
     public final String toString() {

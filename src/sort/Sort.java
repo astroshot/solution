@@ -98,7 +98,7 @@ public class Sort {
             b[i - p] = arr[i];
         }
         for (i = q + 1; i <= r; i++) {
-            c[i - q- 1] = arr[i];
+            c[i - q - 1] = arr[i];
         }
 //Arrays.sort(arr);
         i = 0;
@@ -353,8 +353,8 @@ public class Sort {
                  */
                 if (less < e1 && e5 < great) {
                     /*
-                    * Skip elements, which are equal to pivot values.
-                    */
+                     * Skip elements, which are equal to pivot values.
+                     */
                     while (a[less] == pivot1) {
                         ++less;
                     }

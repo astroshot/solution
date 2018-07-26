@@ -19,8 +19,10 @@ public class GenderRatio {
     }
 
     private static Gender[] genders = {Gender.MALE, Gender.FEMALE};
+
     /**
      * Get a child, 0 represents boy, 1 represents girl
+     *
      * @return 0 or 1
      */
     private static Gender getChild() {

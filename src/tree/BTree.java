@@ -49,6 +49,7 @@ public class BTree {
 
     /**
      * whether if the current node is leaf
+     *
      * @return
      */
     public boolean isLeaf() {
@@ -61,15 +62,15 @@ public class BTree {
 
     /**
      * 生成一棵二叉排序树
-     *           50
-     *        /      \
-     *      38       64
-     *     / \     /   \
-     *   30  40  58    73
-     *   /\      /\   / \
+     * 50
+     * /      \
+     * 38       64
+     * / \     /   \
+     * 30  40  58    73
+     * /\      /\   / \
      * 10 35   51 60 70 100
-     *                    \
-     *                    110
+     * \
+     * 110
      */
     public static BTree createASortedTree() {
         final int NODES_NUM = 14;
@@ -106,15 +107,19 @@ public class BTree {
         treeNodes[12].setRchild(treeNodes[13]);
         return treeNodes[0];
     }
+
     /**
      * 访问某个节点
+     *
      * @param node
      */
     public static void visit(BTree node) {
         System.out.printf("%6d", node.getValue());
     }
+
     /**
      * 先序遍历某二叉树，非递归方法
+     *
      * @param root 二叉树的根节点
      */
     public static void preOrder(BTree root) {
@@ -139,6 +144,7 @@ public class BTree {
 
     /**
      * 中序遍历某二叉树
+     *
      * @param root 二叉树的根节点
      */
     public static void inOrder(BTree root) {
@@ -163,6 +169,7 @@ public class BTree {
 
     /**
      * 后序遍历某二叉树
+     *
      * @param root
      */
     public static void postOrder(BTree root) {
@@ -201,6 +208,7 @@ public class BTree {
 
     /**
      * 按层次遍历某二叉树
+     *
      * @param root
      */
     public static void layerOrder(BTree root) {
@@ -225,6 +233,7 @@ public class BTree {
 
     /**
      * 返回左子树的最大节点
+     *
      * @return
      */
     public static BTree maxLeft(BTree root) {
@@ -237,6 +246,7 @@ public class BTree {
 
     /**
      * 返回右子树的最小节点
+     *
      * @return
      */
     public static BTree minRight(BTree root) {
@@ -291,8 +301,10 @@ public class BTree {
 
         return trees[0];
     }
+
     /**
      * find all paths that its summary is sum
+     *
      * @param target
      */
     public static void findPath(BTree root, int target) {

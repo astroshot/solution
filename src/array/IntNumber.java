@@ -160,6 +160,7 @@ public class IntNumber {
      * calculate a is divided by b
      * and print the quotient and remain
      * without using multiply or divide operator
+     *
      * @param a
      * @param b
      */
@@ -177,7 +178,7 @@ public class IntNumber {
                 quotient--;
             }
             System.out.printf("quotient: %d remain: %d\n", quotient, remain);
-        }  else {
+        } else {
             a = Math.abs(a);
             b = Math.abs(b);
             remain = a;
@@ -198,6 +199,7 @@ public class IntNumber {
      * you have an array called A[N], each element is known.
      * now assign array B[N], which satisfies B[i] = A[1]*A[2]*...*A[i-1]*A[i+1]*...*A[N].
      * demands: do not use divide, time complexity limitation O(n), and space complexity limitation O(1)
+     *
      * @param arr
      * @return
      */
@@ -216,6 +218,7 @@ public class IntNumber {
         }
         return B;
     }
+
     public static void testMultiply() {
         int[] A = {1, 2, 3, 4, 5, 6, 7, 8};
         int[] B = multiplyAssign(A);
@@ -225,6 +228,7 @@ public class IntNumber {
     /**
      * Rotate a matrix by 90 deg, clockwise.
      * Time complexity O(n^2), Space Complexity O(1).
+     *
      * @param matrix
      */
     public static void rotateMatrix(int[][] matrix) {

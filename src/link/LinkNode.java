@@ -59,10 +59,9 @@ public class LinkNode {
 
     /**
      * the length of link, O(n)
-     * @param head
-     *        first node of link
-     * @return
-     *        length of link
+     *
+     * @param head first node of link
+     * @return length of link
      */
     public static int length(LinkNode head) {
         LinkNode p = head;
@@ -94,18 +93,19 @@ public class LinkNode {
             p.setNext(q);
             q = p;
         }
-        return  p;
+        return p;
     }
 
     public static LinkNode tail(LinkNode head) {
         LinkNode p = head;
         if (p != null) {
-            while (p.getNext() != null){
+            while (p.getNext() != null) {
                 p = p.getNext();
             }
         }
         return p;
     }
+
     public static LinkNode createALinkWithRing() {
         int m, n;
         LinkNode p, q, r;
@@ -189,6 +189,7 @@ public class LinkNode {
 
     /**
      * calculate the union of two list
+     *
      * @param l1
      * @param l2
      * @return
@@ -291,8 +292,8 @@ public class LinkNode {
 
     /**
      * shift link by k
-     * @param head
-     *        first node of link
+     *
+     * @param head first node of link
      */
     public static LinkNode shiftLink(LinkNode head, int k) {
         int len = length(head);
@@ -351,6 +352,7 @@ public class LinkNode {
 
     /**
      * cannot modify front and rear
+     *
      * @param head
      * @param front
      * @param rear

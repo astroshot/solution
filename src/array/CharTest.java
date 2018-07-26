@@ -19,8 +19,8 @@ public class CharTest {
             j--;
         }
     }
+
     /**
-     *
      * @param str
      * @param k
      */
@@ -87,6 +87,7 @@ public class CharTest {
     /**
      * input: ab**cd**e*12
      * turns to: *****abcde12
+     *
      * @param str
      * @return num of *
      */
@@ -119,10 +120,9 @@ public class CharTest {
 
     /**
      * get longest increasing continuous digit sub string
-     * @param str
-     *        input string, for example: ads12340567l456789ds34567aaa
-     * @return
-     *        the longest sub string, 456789
+     *
+     * @param str input string, for example: ads12340567l456789ds34567aaa
+     * @return the longest sub string, 456789
      */
     public static String longestIncreasingNumbers(String str) {
         char[] arr = str.toCharArray();
