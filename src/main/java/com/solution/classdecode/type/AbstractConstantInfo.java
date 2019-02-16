@@ -4,7 +4,8 @@ package com.solution.classdecode.type;
  * Created by Altair on 2017/3/30.
  */
 public abstract class AbstractConstantInfo {
-    private int tag;
+
+    protected int tag;
 
     public int getTag() {
         return tag;

@@ -3,18 +3,10 @@ package com.solution.classdecode.type;
 /**
  * Created by Altair on 2017/3/30.
  */
-public class ConstantFieldRefInfo {
-    private int tag;
+public class ConstantFieldRefInfo extends AbstractConstantInfo {
+
     private int indexToClassInfo;
     private int indexToNameType;
-
-    public int getTag() {
-        return tag;
-    }
-
-    public void setTag(int tag) {
-        this.tag = tag;
-    }
 
     public int getIndexToClassInfo() {
         return indexToClassInfo;

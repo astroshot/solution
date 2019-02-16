@@ -5,18 +5,10 @@ import java.io.UnsupportedEncodingException;
 /**
  * Created by Altair on 2017/3/30.
  */
-public class ConstantUTF8Info {
-    private int tag;
+public class ConstantUTF8Info extends AbstractConstantInfo {
+
     private int length;
     private String content;
-
-    public int getTag() {
-        return tag;
-    }
-
-    public void setTag(int tag) {
-        this.tag = tag;
-    }
 
     public int getLength() {
         return length;

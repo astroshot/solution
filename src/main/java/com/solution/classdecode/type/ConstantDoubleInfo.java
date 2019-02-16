@@ -3,17 +3,9 @@ package com.solution.classdecode.type;
 /**
  * Created by Altair on 2017/3/30.
  */
-public class ConstantDoubleInfo {
-    private int tag;
+public class ConstantDoubleInfo extends AbstractConstantInfo {
+
     private double value;
-
-    public int getTag() {
-        return tag;
-    }
-
-    public void setTag(int tag) {
-        this.tag = tag;
-    }
 
     public double getValue() {
         return value;

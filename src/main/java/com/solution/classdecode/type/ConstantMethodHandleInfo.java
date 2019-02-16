@@ -3,18 +3,10 @@ package com.solution.classdecode.type;
 /**
  * Created by Altair on 2017/3/30.
  */
-public class ConstantMethodHandleInfo {
-    private int tag;
+public class ConstantMethodHandleInfo extends AbstractConstantInfo {
+
     private int referenceKind;
     private int referenceIndex;
-
-    public int getTag() {
-        return tag;
-    }
-
-    public void setTag(int tag) {
-        this.tag = tag;
-    }
 
     public int getReferenceKind() {
         return referenceKind;

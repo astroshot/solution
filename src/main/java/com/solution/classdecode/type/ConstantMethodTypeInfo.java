@@ -3,17 +3,9 @@ package com.solution.classdecode.type;
 /**
  * Created by Altair on 2017/3/30.
  */
-public class ConstantMethodTypeInfo {
-    private int tag;
+public class ConstantMethodTypeInfo extends AbstractConstantInfo {
+
     private int descriptorIndex;
-
-    public int getTag() {
-        return tag;
-    }
-
-    public void setTag(int tag) {
-        this.tag = tag;
-    }
 
     public int getDescriptorIndex() {
         return descriptorIndex;

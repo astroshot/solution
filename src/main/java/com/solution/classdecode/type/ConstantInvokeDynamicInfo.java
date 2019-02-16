@@ -3,18 +3,10 @@ package com.solution.classdecode.type;
 /**
  * Created by Altair on 2017/3/30.
  */
-public class ConstantInvokeDynamicInfo {
-    private int tag;
+public class ConstantInvokeDynamicInfo extends AbstractConstantInfo {
+
     private int bootstrapMethodAttrIndex;
     private int nameAndTypeIndex;
-
-    public int getTag() {
-        return tag;
-    }
-
-    public void setTag(int tag) {
-        this.tag = tag;
-    }
 
     public int getBootstrapMethodAttrIndex() {
         return bootstrapMethodAttrIndex;

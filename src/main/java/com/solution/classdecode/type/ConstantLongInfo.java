@@ -3,17 +3,9 @@ package com.solution.classdecode.type;
 /**
  * Created by Altair on 2017/3/30.
  */
-public class ConstantLongInfo {
-    private int tag;
+public class ConstantLongInfo extends AbstractConstantInfo {
+
     private long value;
-
-    public int getTag() {
-        return tag;
-    }
-
-    public void setTag(int tag) {
-        this.tag = tag;
-    }
 
     public long getValue() {
         return value;
