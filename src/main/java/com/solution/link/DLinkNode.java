@@ -3,27 +3,27 @@ package com.solution.link;
 /**
  * Created by dell on 2017/4/24.
  */
-public class DLinkNode {
-    private int value;
+public class DLinkNode<T> {
+    private T value;
     private DLinkNode prev, next;
 
     public DLinkNode() {
-        this.value = 0;
+        this.value = null;
         this.prev = null;
         this.next = null;
     }
 
-    public DLinkNode(int value) {
+    public DLinkNode(T value) {
         this.value = value;
         this.prev = null;
         this.next = null;
     }
 
-    public int getValue() {
+    public T getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(T value) {
         this.value = value;
     }
 
