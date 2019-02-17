@@ -121,19 +121,20 @@ public class BTree<T> {
         BTree p = root;
         if (p == null) {
             System.out.println("Empty Tree!");
-        } else {
-            stack = new Stack<BTree>();
-            while (p != null || !stack.empty()) {
-                while (p != null) {
-                    visit(p);
-                    stack.push(p);
-                    p = p.getLeft();
-                }
-                p = stack.pop();
-                p = p.getRight();
-            }
-            System.out.println("\nPreOrder Complete!");
+            return;
         }
+
+        stack = new Stack<BTree>();
+        while (p != null || !stack.empty()) {
+            while (p != null) {
+                visit(p);
+                stack.push(p);
+                p = p.getLeft();
+            }
+            p = stack.pop();
+            p = p.getRight();
+        }
+        System.out.println("\nPreOrder Complete!");
     }
 
     /**
@@ -146,19 +147,20 @@ public class BTree<T> {
         BTree p = root;
         if (p == null) {
             System.out.println("Empty Tree!");
-        } else {
-            stack = new Stack<BTree>();
-            while (p != null || !stack.empty()) {
-                while (p != null) {
-                    stack.push(p);
-                    p = p.getLeft();
-                }
-                p = stack.pop();
-                visit(p);
-                p = p.getRight();
-            }
-            System.out.println("\nInOrder Complete!");
+            return;
         }
+
+        stack = new Stack<BTree>();
+        while (p != null || !stack.empty()) {
+            while (p != null) {
+                stack.push(p);
+                p = p.getLeft();
+            }
+            p = stack.pop();
+            visit(p);
+            p = p.getRight();
+        }
+        System.out.println("\nInOrder Complete!");
     }
 
     /**
@@ -174,30 +176,31 @@ public class BTree<T> {
 
         if (p == null) {
             System.out.println("Empty Tree!");
-        } else {
-            stack = new Stack<BTree>();
-            flagstack = new Stack<Boolean>();
-
-            while (p != null || !stack.empty()) {
-                while (p != null) {
-                    stack.push(p);
-                    flagstack.push(false);
-                    p = p.getLeft();
-                }
-                p = stack.pop();
-                flag = flagstack.pop();
-
-                if (flag) {
-                    visit(p);
-                    p = null;
-                } else { // 当前节点的右子树尚未进栈，需要将当前节点进栈
-                    stack.push(p);
-                    flagstack.push(true);
-                    p = p.getRight();
-                }
-            }
-            System.out.println("\nPostOrder Complete!");
+            return;
         }
+
+        stack = new Stack<BTree>();
+        flagstack = new Stack<Boolean>();
+
+        while (p != null || !stack.empty()) {
+            while (p != null) {
+                stack.push(p);
+                flagstack.push(false);
+                p = p.getLeft();
+            }
+            p = stack.pop();
+            flag = flagstack.pop();
+
+            if (flag) {
+                visit(p);
+                p = null;
+            } else { // 当前节点的右子树尚未进栈，需要将当前节点进栈
+                stack.push(p);
+                flagstack.push(true);
+                p = p.getRight();
+            }
+        }
+        System.out.println("\nPostOrder Complete!");
     }
 
     /**
@@ -210,19 +213,19 @@ public class BTree<T> {
         BTree p = root;
         if (p == null) {
             System.out.println("Empty Tree!");
-        } else {
-            queue = new LinkedList<BTree>();
-            queue.offer(p);
-            while (!queue.isEmpty()) {
-                p = queue.poll();
-                visit(p);
-                if (p.getLeft() != null)
-                    queue.offer(p.getLeft());
-                if (p.getRight() != null)
-                    queue.offer(p.getRight());
-            }
-            System.out.println("\nLayerOrder Complete!");
+            return;
         }
+        queue = new LinkedList<BTree>();
+        queue.offer(p);
+        while (!queue.isEmpty()) {
+            p = queue.poll();
+            visit(p);
+            if (p.getLeft() != null)
+                queue.offer(p.getLeft());
+            if (p.getRight() != null)
+                queue.offer(p.getRight());
+        }
+        System.out.println("\nLayerOrder Complete!");
     }
 
     /**
