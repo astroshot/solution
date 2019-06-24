@@ -27,6 +27,9 @@ public class SemaphoreThreadCycle implements Runnable {
                 sema.acquire();
                 while (this.name.equals(ALPHABET[count % ALPHABET.length]) && count < MAX_COUNT) {
                     System.out.print(this.name);
+                    if (this.name.equals(ALPHABET[ALPHABET.length - 1])) {
+                        System.out.println();
+                    }
                     count++;
                 }
             } catch (InterruptedException e) {

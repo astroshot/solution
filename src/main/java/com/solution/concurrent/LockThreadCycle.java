@@ -16,40 +16,24 @@ public class LockThreadCycle implements Runnable {
 
     private String name;
 
+    private static volatile int count = 0;
+
     public LockThreadCycle(String name) {
         this.name = name;
     }
 
-    private static class IntegerCounter {
-        private volatile int count;
-
-        public IntegerCounter(int count) {
-            this.count = count;
-        }
-
-        public int getCount() {
-            return count;
-        }
-
-        public void setCount(int count) {
-            this.count = count;
-        }
-    }
-
-    private static final IntegerCounter counter = new IntegerCounter(0);
-
     @Override
     public void run() {
-        while (counter.getCount() < MAX_COUNT) {
+        while (count < MAX_COUNT) {
             try {
                 lock.lock();
-                while (this.name.equals(ALPHABET[counter.getCount() % ALPHABET.length])
-                        && counter.getCount() < MAX_COUNT) {  // 双重验证
+                while (this.name.equals(ALPHABET[count % ALPHABET.length])
+                        && count < MAX_COUNT) {  // 双重验证
                     System.out.print(this.name);
                     if (this.name.equals(ALPHABET[ALPHABET.length - 1])) {
                         System.out.println();
                     }
-                    counter.setCount(counter.getCount() + 1);
+                    count++;
                 }
             } catch (Exception e) {
                 e.printStackTrace();
