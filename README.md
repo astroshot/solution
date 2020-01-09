@@ -2,7 +2,9 @@
 
 ## Introduction
 
-This is not a web project, just a local Java basic coding test using Spring and Junit4.
+This is not a web project, just a Java basic programing test using Spring and Junit4.
+
+Idea is recommended to open this project.
 
 ## Dependence
 

@@ -1,12 +1,12 @@
 package com.solution.tree;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
-/**
- * Created by dell on 2017/4/20.
- */
-public class BTree<T> {
-    private T value;
+
+public class BTree {
+    private Integer value;
     private BTree left, right;
 
     public BTree() {
@@ -15,17 +15,17 @@ public class BTree<T> {
         this.right = null;
     }
 
-    public BTree(T value) {
+    public BTree(int value) {
         this.value = value;
         this.left = null;
         this.right = null;
     }
 
-    public T getValue() {
+    public Integer getValue() {
         return value;
     }
 
-    public void setValue(T value) {
+    public void setValue(int value) {
         this.value = value;
     }
 
@@ -33,7 +33,7 @@ public class BTree<T> {
         return left;
     }
 
-    public void setLeft(BTree<T> left) {
+    public void setLeft(BTree left) {
         this.left = left;
     }
 
@@ -41,7 +41,7 @@ public class BTree<T> {
         return right;
     }
 
-    public void setRight(BTree<T> right) {
+    public void setRight(BTree right) {
         this.right = right;
     }
 
@@ -70,7 +70,7 @@ public class BTree<T> {
         final int NODES_NUM = 14;
         BTree[] treeNodes = new BTree[NODES_NUM];
         for (int i = 0; i < treeNodes.length; i++) {
-            treeNodes[i] = new BTree<Integer>();
+            treeNodes[i] = new BTree();
         }
 
         treeNodes[0].setValue(50);
@@ -268,7 +268,7 @@ public class BTree<T> {
         return p;
     }
 
-    private static BTree<Integer> createPathTree() {
+    private static BTree createPathTree() {
         int num = 5;
         BTree[] trees = new BTree[num];
         for (int i = 0; i < num; i++) {
@@ -339,4 +339,37 @@ public class BTree<T> {
 //        findPath(root, 22);
 //    }
 
+    public static void morrisInOrder(BTree root) {
+        if (root == null) {
+            System.out.println("Empty tree");
+            return;
+        }
+
+        BTree cur = root;
+        BTree pre;
+        while (cur != null) {
+            if (cur.getLeft() == null) {
+                // 若当前节点的左子树为空，则输出当前节点，并将当前节点的右子树作为当前节点
+                System.out.print(cur.getValue() + " ");
+                cur = cur.getRight();
+            } else {
+                // 当前节点的左子树不为空，找到当前节点在中序遍历中的前驱节点
+                pre = cur.getLeft();
+                while (pre.getRight() != null && pre.getRight() != cur) {
+                    pre = pre.getRight();
+                }
+
+                if (pre.getRight() == null) {
+                    pre.setRight(cur);
+                    cur = cur.getLeft();
+                } else {
+                    // 前驱节点的右子树为当前节点
+                    pre.setRight(null);
+                    System.out.print(cur.getValue() + " ");
+                    cur = cur.getRight();
+                }
+            }
+        }
+        System.out.println("Morris In Order Complete!");
+    }
 }

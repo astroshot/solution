@@ -1,16 +1,11 @@
 package com.solution.tree;
 
+import com.solution.AbstractTestCase;
+import org.junit.Test;
+
 import static com.solution.tree.BTree.createASortedTree;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class TestBTree {
+public class TestBTree extends AbstractTestCase {
 
     @Test
     public void testBTreeOrder() {
@@ -21,4 +16,10 @@ public class TestBTree {
         BTree.layerOrder(root);
     }
 
+    @Test
+    public void testMorrisInOrder() {
+        BTree root = createASortedTree();
+        BTree.inOrder(root);
+        BTree.morrisInOrder(root);
+    }
 }

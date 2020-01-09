@@ -4,9 +4,7 @@ import com.solution.sort.Sort;
 
 import java.util.Random;
 
-/**
- * Created by dell on 2017/4/20.
- */
+
 public class LinkNode {
     public static final int MAX_NODES = 10;
     public static final int MAX_VALUE = 100;

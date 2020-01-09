@@ -1,11 +1,11 @@
 package com.solution.link;
 
-/**
- * Created by dell on 2017/4/24.
- */
+
 public class DLinkNode<T> {
+
     private T value;
-    private DLinkNode prev, next;
+
+    private DLinkNode<T> prev, next;
 
     public DLinkNode() {
         this.value = null;
@@ -27,25 +27,25 @@ public class DLinkNode<T> {
         this.value = value;
     }
 
-    public DLinkNode getPrev() {
+    public DLinkNode<T> getPrev() {
         return prev;
     }
 
-    public void setPrev(DLinkNode prev) {
+    public void setPrev(DLinkNode<T> prev) {
         this.prev = prev;
     }
 
-    public DLinkNode getNext() {
+    public DLinkNode<T> getNext() {
         return next;
     }
 
-    public void setNext(DLinkNode next) {
+    public void setNext(DLinkNode<T> next) {
         this.next = next;
     }
 
-    public void delDLinkNode(DLinkNode node) {
-        DLinkNode p = node.prev;
-        DLinkNode q = node.next;
+    public void delDLinkNode(DLinkNode<T> node) {
+        DLinkNode<T> p = node.prev;
+        DLinkNode<T> q = node.next;
         p.next = q;
         q.prev = p;
     }
