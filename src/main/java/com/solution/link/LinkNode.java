@@ -6,11 +6,16 @@ import java.util.Random;
 
 
 public class LinkNode {
+
     public static final int MAX_NODES = 10;
+
     public static final int MAX_VALUE = 100;
-    private int value;
-    private LinkNode next;
+
     private static Random rand = new Random();
+
+    private int value;
+
+    private LinkNode next;
 
     public LinkNode() {
         this.value = 0;
@@ -26,33 +31,18 @@ public class LinkNode {
         this.next = null;
     }
 
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int value) {
-        this.value = value;
-    }
-
-    public LinkNode getNext() {
-        return next;
-    }
-
-    public void setNext(LinkNode next) {
-        this.next = next;
-    }
-
     public static void printLink(LinkNode head) {
         LinkNode p = head;
         if (p == null) {
             return;
-        } else {
-            while (p != null) {
-                System.out.printf("%6d", p.getValue());
-                p = p.getNext();
-            }
-            System.out.println();
         }
+
+        while (p != null) {
+            System.out.printf("%6d", p.getValue());
+            p = p.getNext();
+        }
+
+        System.out.println();
     }
 
     /**
@@ -123,16 +113,16 @@ public class LinkNode {
     public static LinkNode reverse(LinkNode head) {
         LinkNode p = head, q = null, r = null;
         if (p == null) {
-            return p;
-        } else {
-            while (p != null) {
-                q = p.getNext();
-                p.setNext(r);
-                r = p;
-                p = q;
-            }
-            return r;
+            return null;
         }
+
+        while (p != null) {
+            q = p.getNext();
+            p.setNext(r);
+            r = p;
+            p = q;
+        }
+        return r;
     }
 
     public static void testReverse() {
@@ -343,7 +333,6 @@ public class LinkNode {
         printLink(head);
     }
 
-
     public static void mergeSort(LinkNode head) {
 
     }
@@ -378,5 +367,21 @@ public class LinkNode {
         printLink(head);
         splitLink(head, front, rear);
         printLink(rear);
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public LinkNode getNext() {
+        return next;
+    }
+
+    public void setNext(LinkNode next) {
+        this.next = next;
     }
 }
