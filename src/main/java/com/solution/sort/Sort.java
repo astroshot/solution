@@ -4,9 +4,10 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * Created by dell on 2017/4/20.
+ * Sort Exercises
  */
 public class Sort {
+
     public static void swap(int[] arr, int i, int j) {
         if (i != j) {
             int tmp = arr[i];
@@ -23,8 +24,8 @@ public class Sort {
 
     /**
      * sort #1
-     *
-     * @param arr
+     * Insertion Sort
+     * AVG O(n^2)
      */
     public static void insertionSort(int[] arr) {
         int i, j;
@@ -41,8 +42,8 @@ public class Sort {
 
     /**
      * sort #2
-     *
-     * @param arr
+     * Bubble Sort
+     * AVG O(n^2)
      */
     public static void bubbleSort(int[] arr) {
         boolean moved = true;
@@ -59,9 +60,8 @@ public class Sort {
 
     /**
      * sort #3
-     *
-     * @param arr
-     * @param maxNum
+     * Count Sort
+     * O(n)
      */
     public static void countSort(int[] arr, int maxNum) {
         int[] c = new int[maxNum];
@@ -99,7 +99,8 @@ public class Sort {
         for (i = q + 1; i <= r; i++) {
             c[i - q - 1] = arr[i];
         }
-//Arrays.sort(arr);
+
+        // Arrays.sort(arr);
         i = 0;
         j = 0;
         k = p;
@@ -129,8 +130,8 @@ public class Sort {
 
     /**
      * sort #5
-     *
-     * @param arr
+     * Selection Sort
+     * AVG: O(n)
      */
     public static void selectionSort(int[] arr) {
         int tmp;
@@ -165,16 +166,11 @@ public class Sort {
     }
 
     /**
-     * partition随机版
-     *
-     * @param arr
-     * @param p
-     * @param r
-     * @return
+     * partition 随机版
      */
     public static int randomizedPartition(int[] arr, int p, int r) {
         Random rand = new Random();
-        int i = rand.nextInt(r - p) + p; // PS: 要生成介于p和r之间的随机数
+        int i = rand.nextInt(r - p) + p; // PS: 要生成介于 p 和 r 之间的随机数
         swap(arr, i, r);
         return partition(arr, p, r);
     }
@@ -490,8 +486,7 @@ public class Sort {
 
     /**
      * sort #7
-     *
-     * @param arr
+     * Shell Sort
      */
     public static void shellSort(int[] arr) {
         int gap = arr.length;
@@ -512,10 +507,7 @@ public class Sort {
 
     /**
      * sort #8
-     *
-     * @param arr
-     * @param p
-     * @param r
+     * adjust array to Heap
      */
     private static void adjust(int[] arr, int p, int r) {
         int j, tmp;
@@ -523,10 +515,12 @@ public class Sort {
         tmp = arr[p];
         j = 2 * p + 1;
         while (j <= r) {
-            if (j < r && arr[j] < arr[j + 1])
+            if (j < r && arr[j] < arr[j + 1]) {
                 j++;
-            if (tmp >= arr[j])
+            }
+            if (tmp >= arr[j]) {
                 break;
+            }
             arr[(j - 1) / 2] = arr[j];
             j = 2 * j + 1;
         }
@@ -542,6 +536,42 @@ public class Sort {
             adjust(arr, 0, i);
             printArray(arr);
         }
+    }
+
+    public static void simpleDualPivotQuickSort(int[] arr, int left, int right) {
+        if (right - left < 1) {
+            return;
+        }
+
+        int p = Math.min(arr[left], arr[right]);
+        int q = Math.max(arr[left], arr[right]);
+
+        int l = left + 1;
+        int g = right - 1;
+        int k = l;
+
+        while (k <= g) {
+            if (arr[k] < p) {
+                swap(arr, k, q);
+            } else if (arr[k] >= q) {
+                while (arr[g] > q && k < g) {
+                    g--;
+                }
+                swap(arr, k, g);
+                g--;
+                if (arr[k] < p) {
+                    swap(arr, k, l);
+                    l++;
+                }
+            }
+            k++;
+        }
+
+        l--;
+        g++;
+        arr[left] = arr[l];
+        arr[l] = arr[p];
+        arr[g] = q;
     }
 
     public static int[] generateRandomArray() {
@@ -623,7 +653,7 @@ public class Sort {
         int[] arr = generateRandomArray();
         printArray(arr);
         heapSort(arr);
-//        printArray(arr);
+        // printArray(arr);
     }
 
     public static void testArraySort() {

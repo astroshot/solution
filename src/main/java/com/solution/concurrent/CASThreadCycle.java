@@ -35,7 +35,7 @@ public class CASThreadCycle {
 
     public static void main(String[] args) {
         ThreadPoolExecutor executor = new ThreadPoolExecutor(
-                3, 3, 20, TimeUnit.MINUTES, new LinkedBlockingQueue<Runnable>());
+                3, 3, 20, TimeUnit.MINUTES, new LinkedBlockingQueue<>());
 
         for (String item : ThreadPrinter.ALPHABET) {
             executor.execute(new ThreadPrinter(item));

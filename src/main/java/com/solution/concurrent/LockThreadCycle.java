@@ -63,7 +63,7 @@ public class LockThreadCycle implements Runnable {
     public static void main(String[] args) {
 
         ThreadPoolExecutor executor = new ThreadPoolExecutor(
-                3, 3, 20, TimeUnit.MINUTES, new LinkedBlockingQueue<Runnable>());
+                3, 3, 20, TimeUnit.MINUTES, new LinkedBlockingQueue<>());
 
         for (String item : ALPHABET) {
             executor.execute(new LockThreadCycle(item));
