@@ -2,6 +2,10 @@ package com.solution.str;
 
 public class Match {
 
+    public static boolean match(String pattern, String text) {
+        return match(pattern, 0, text, 0);
+    }
+
     /**
      * 字符串匹配
      *
@@ -9,33 +13,39 @@ public class Match {
      * @param text    待匹配文本
      * @return 是否匹配
      */
-    public static boolean match(String pattern, String text) {
-        int i = 0;
-        int j = 0;
+    public static boolean match(String pattern, int patternStart, String text, int textStart) {
+        int i = patternStart;
+        int j = textStart;
 
-        if (pattern.charAt(i) == text.charAt(j) || pattern.charAt(i) == '?') {
-            String subPattern = pattern.substring(i + 1, pattern.length() - 1);
-            String subText = text.substring(j + 1, text.length() - 1);
-            return match(subPattern, subText);
-        } else if (pattern.charAt(i) == '*') {
-            if (j == text.length()) {
-                return true;
+        if (i == pattern.length()) {
+            // 模式串已空，如果此时匹配串也为空，返回 true，否则返回 false
+            return (j == text.length());
+        } else if (pattern.charAt(i) == '?') {
+            if (j == text.length()) { // 此时匹配串为空，返回 false
+                return false;
             }
-
-            // TODO: not finished
-            while (j < text.length()) {
-                String subText = text.substring(j, text.length() - 1);
-                if (!match(pattern, subText)) {
-                    return false;
+            return match(pattern, i + 1, text, j + 1);
+        } else if (pattern.charAt(i) == '*') {
+            for (j = textStart; j < text.length(); j++) {
+                boolean matched = match(pattern, i + 1, text, j);
+                if (matched) {
+                    return true;
                 }
-                j++;
             }
             return false;
-        } else if (i == pattern.length() - 1 && j == text.length() - 1) {
-            return true;
         } else {
+            if (pattern.charAt(i) == text.charAt(j)) {
+                return match(pattern, i + 1, text, j + 1);
+            }
             return false;
         }
+    }
 
+    public static void main(String[] args) {
+        System.out.println(match("te*t", "te8888"));
+        System.out.println(match("te?t", "test"));
+        System.out.println(match("te?t", "te"));
+        System.out.println(match("te*t", "te"));
+        System.out.println(match("te*t", "te8888tt"));
     }
 }
