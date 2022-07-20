@@ -11,11 +11,27 @@ public class LinkNode {
 
     public static final int MAX_VALUE = 100;
 
-    private static Random rand = new Random();
+    private static final Random rand = new Random();
 
     private int value;
 
     private LinkNode next;
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public LinkNode getNext() {
+        return next;
+    }
+
+    public void setNext(LinkNode next) {
+        this.next = next;
+    }
 
     public LinkNode() {
         this.value = 0;
@@ -309,7 +325,7 @@ public class LinkNode {
                 head = newHead;
             } else {
                 k = -k;
-//                k = k % len;
+                // k = k % len;
                 for (int i = 1; i < k; i++) {
                     p = p.getNext();
                 }
@@ -369,19 +385,4 @@ public class LinkNode {
         printLink(rear);
     }
 
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int value) {
-        this.value = value;
-    }
-
-    public LinkNode getNext() {
-        return next;
-    }
-
-    public void setNext(LinkNode next) {
-        this.next = next;
-    }
 }

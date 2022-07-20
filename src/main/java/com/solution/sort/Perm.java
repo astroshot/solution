@@ -46,6 +46,20 @@ public class Perm {
         }
     }
 
+
+    /**
+     * Johnson Trotter 算法
+     */
+    public static void johnsonTrotter(int n) {
+        int[] arr = make(n);
+        boolean[] left = new boolean[n];
+        for (int i = 0; i < n; i++) {
+            left[i] = false;
+        }
+
+
+    }
+
     public static void main(String[] args) {
         perm(4);
     }
