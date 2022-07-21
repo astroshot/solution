@@ -124,10 +124,29 @@ public class BTreeTest {
         BTree.postOrder(root);
     }
 
+
+    /**
+     * 二叉树转换为镜像
+     */
+    public static BTree mirrorOf(BTree root) {
+        if (root == null) {
+            return null;
+        }
+
+        BTree left = root.getLeft();
+        BTree right = root.getRight();
+
+        root.setRight(mirrorOf(left));
+        root.setLeft(mirrorOf(right));
+        return root;
+    }
+
     public static void main(String[] args) {
         // testConvertLink();
         // testRestore();
         BTree root = BTree.createASortedTree();
-        BTree.layerOrder(root);
+        BTree.inOrder(root);
+        root = mirrorOf(root);
+        BTree.inOrder(root);
     }
 }
