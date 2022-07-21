@@ -2,6 +2,7 @@ package com.solution.tree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class BTreeTest {
@@ -141,12 +142,67 @@ public class BTreeTest {
         return root;
     }
 
+    public static void postOrder(BTree root) {
+        if (root == null) {
+            return;
+        }
+
+        BTree p = root;
+        List<BTree> stack = new LinkedList<>();
+        List<Boolean> visitStack = new LinkedList<>();
+        int top = -1;
+        while (p != null || top >= 0) {
+            while (p != null) {
+                stack.add(p);
+                visitStack.add(Boolean.FALSE);
+                top++;
+                p = p.getLeft();
+            }
+
+            p = stack.remove(top);
+            Boolean canVisit = visitStack.remove(top);
+            top--;
+            if (!canVisit) {
+                stack.add(p);
+                visitStack.add(Boolean.TRUE);
+                top++;
+                p = p.getRight();
+            } else {
+                BTree.visit(p);
+                p = null;
+            }
+        }
+    }
+
+    public static void preOrder(BTree root) {
+        if (root == null) {
+            return;
+        }
+
+        BTree p = root;
+        List<BTree> stack = new LinkedList<>();
+        int top = -1;
+        while (p != null || top >= 0) {
+            while (p != null) {
+                stack.add(p);
+                top++;
+                p = p.getLeft();
+            }
+
+            p = stack.remove(top);
+            top--;
+            BTree.visit(p);
+            p = p.getRight();
+        }
+    }
+
     public static void main(String[] args) {
         // testConvertLink();
         // testRestore();
         BTree root = BTree.createASortedTree();
-        BTree.inOrder(root);
-        root = mirrorOf(root);
-        BTree.inOrder(root);
+        // BTree.inOrder(root);
+        // root = mirrorOf(root);
+        // BTree.inOrder(root);
+        postOrder(root);
     }
 }
