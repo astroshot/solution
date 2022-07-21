@@ -126,6 +126,8 @@ public class BTreeTest {
 
     public static void main(String[] args) {
         // testConvertLink();
-        testRestore();
+        // testRestore();
+        BTree root = BTree.createASortedTree();
+        BTree.layerOrder(root);
     }
 }

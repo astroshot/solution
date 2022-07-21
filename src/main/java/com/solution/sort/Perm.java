@@ -2,6 +2,10 @@ package com.solution.sort;
 
 public class Perm {
 
+    protected static void log(String format, Object... args) {
+        System.out.printf(format, args);
+    }
+
     protected static int[] make(int n) {
         int[] arr = new int[n];
         for (int i = 0; i < n; i++) {
@@ -47,6 +51,33 @@ public class Perm {
     }
 
 
+    public static boolean canMove(int[] arr, boolean[] left, int i) {
+        if (i == 0) {
+            return !left[i] && arr[i] > arr[i + 1];
+        }
+
+        if (i == arr.length - 1) {
+            return left[i] && arr[i] > arr[i - 1];
+        }
+
+        return left[i] ? arr[i] > arr[i - 1] : arr[i] > arr[i + 1];
+    }
+
+    public static int findMovableIndex(int[] arr, boolean[] left) {
+        int val = -1;
+        int movableIndex = -1;
+        for (int i = 0; i < arr.length; i++) {
+            if (canMove(arr, left, i)) {
+                if (val < arr[i]) {
+                    val = arr[i];
+                    movableIndex = i;
+                }
+            }
+        }
+
+        return movableIndex;
+    }
+
     /**
      * Johnson Trotter 算法
      */
@@ -54,13 +85,23 @@ public class Perm {
         int[] arr = make(n);
         boolean[] left = new boolean[n];
         for (int i = 0; i < n; i++) {
-            left[i] = false;
+            left[i] = true;
         }
 
+        visit(arr);
+        int movableIndex = findMovableIndex(arr, left);
+        if (movableIndex == -1) {
+            return;
+        }
 
+        if (left[movableIndex]) {
+            swap(arr, movableIndex, movableIndex - 1);
+        } else {
+            swap(arr, movableIndex, movableIndex + 1);
+        }
     }
 
     public static void main(String[] args) {
-        perm(4);
+        johnsonTrotter(4);
     }
 }

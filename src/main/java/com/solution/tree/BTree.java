@@ -1,6 +1,8 @@
 package com.solution.tree;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
 
@@ -205,10 +207,35 @@ public class BTree {
 
     /**
      * 按层次遍历某二叉树
-     *
-     * @param root
      */
     public static void layerOrder(BTree root) {
+        if (root == null) {
+            System.out.println("Null root");
+            return;
+        }
+
+        List<BTree> queue = new ArrayList<>();
+        BTree p;
+        int front = 0;
+        int rear = 0;
+        queue.add(root);
+        do {
+            p = queue.get(front);
+            front++;
+            visit(p);
+            if (p.getLeft() != null) {
+                queue.add(p.getLeft());
+                rear++;
+            }
+            if (p.getRight() != null) {
+                queue.add(p.getRight());
+                rear++;
+            }
+        } while (front <= rear);
+        System.out.println("\nLayerOrder Complete!");
+    }
+
+    public static void layerOrderV1(BTree root) {
         Queue<BTree> queue;
         BTree p = root;
         if (p == null) {
@@ -291,54 +318,54 @@ public class BTree {
 
     /**
      * find all paths that its summary is sum
+     *
      * @param target
      */
-//    public static void findPath(BTree<T> root, int target) {
-//        BTree p = root;
-//        Stack<BTree> bTreeStack;
-//        Stack<Integer> sumStack;
-//        ListIterator<BTree> iter;
-//        int sum = 0;
-//        if (p == null) {
-//            System.out.println("Empty tree.");
-//        } else {
-//            bTreeStack = new Stack<BTree>();
-//            sumStack = new Stack<Integer>();
-//
-//            while (p != null || !bTreeStack.isEmpty()) {
-//                while (p != null) {
-//                    sum += p.getValue();
-//                    sumStack.push(sum);
-//                    bTreeStack.push(p);
-//                    p = p.getLeft();
-//                }
-//                p = bTreeStack.pop();
-//                sum = sumStack.pop();
-//
-//                if (p.isLeaf() && sum == target) {
-//                    iter = bTreeStack.listIterator();
-//                    while (iter.hasNext()) {
-//                        visit(iter.next());
-//                        //iter.next();
-//                    }
-////                    for (BTree node : bTreeStack) {
-////                        visit(node);
-////                    }
-//                    visit(p);
-//                    System.out.println();
-//                }
-//
-//                p = p.getRight();
-//            }
-//            System.out.println("Path not found!");
-//        }
-//    }
+    //    public static void findPath(BTree<T> root, int target) {
+    //        BTree p = root;
+    //        Stack<BTree> bTreeStack;
+    //        Stack<Integer> sumStack;
+    //        ListIterator<BTree> iter;
+    //        int sum = 0;
+    //        if (p == null) {
+    //            System.out.println("Empty tree.");
+    //        } else {
+    //            bTreeStack = new Stack<BTree>();
+    //            sumStack = new Stack<Integer>();
+    //
+    //            while (p != null || !bTreeStack.isEmpty()) {
+    //                while (p != null) {
+    //                    sum += p.getValue();
+    //                    sumStack.push(sum);
+    //                    bTreeStack.push(p);
+    //                    p = p.getLeft();
+    //                }
+    //                p = bTreeStack.pop();
+    //                sum = sumStack.pop();
+    //
+    //                if (p.isLeaf() && sum == target) {
+    //                    iter = bTreeStack.listIterator();
+    //                    while (iter.hasNext()) {
+    //                        visit(iter.next());
+    //                        //iter.next();
+    //                    }
+    ////                    for (BTree node : bTreeStack) {
+    ////                        visit(node);
+    ////                    }
+    //                    visit(p);
+    //                    System.out.println();
+    //                }
+    //
+    //                p = p.getRight();
+    //            }
+    //            System.out.println("Path not found!");
+    //        }
+    //    }
 
-//    public static void testPrintPath() {
-//        BTree root = createPathTree();
-//        findPath(root, 22);
-//    }
-
+    //    public static void testPrintPath() {
+    //        BTree root = createPathTree();
+    //        findPath(root, 22);
+    //    }
     public static void morrisInOrder(BTree root) {
         if (root == null) {
             System.out.println("Empty tree");

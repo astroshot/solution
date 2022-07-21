@@ -277,8 +277,10 @@ public class Sort {
                 /*
                  * Skip elements, which are less or greater than pivot values.
                  */
-                while (a[++less] < pivot1) ;
-                while (a[--great] > pivot2) ;
+                while (a[++less] < pivot1)
+                    ;
+                while (a[--great] > pivot2)
+                    ;
 
                 /*
                  * Partitioning:
@@ -535,6 +537,27 @@ public class Sort {
             swap(arr, 0, i + 1);
             adjust(arr, 0, i);
             printArray(arr);
+        }
+    }
+
+    public static void heapify(int[] arr, int start, int end) {
+        int i = start;
+        while (2 * i + 2 <= end) {
+            if (arr[i] < arr[2 * i + 1]) {
+                swap(arr, i, 2 * i + 1);
+            }
+            if (arr[i] < arr[2 * i + 2]) {
+                swap(arr, i, 2 * i + 2);
+            }
+
+            i++;
+        }
+    }
+
+    public static void heapSortV2(int[] arr) {
+        heapify(arr, 0, arr.length - 1);
+        swap(arr, 0, arr.length - 1);
+        for (int n = arr.length - 1; n >= 0; n--) {
         }
     }
 
