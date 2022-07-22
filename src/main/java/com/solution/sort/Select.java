@@ -47,16 +47,11 @@ public class Select {
     }
 
     public static int findMedian(int[] arr, int p, int r) {
-        /**
-         * There is 5 elements in every group.
-         */
+        // There is 5 elements in every group.
         final int NUM_PER_GROUP = 5;
-        /**
-         * Then the group num is n.
-         */
+        // Then the group num is n.
         int groupNum = arr.length / NUM_PER_GROUP;
         int remain = arr.length % NUM_PER_GROUP;
-
         return 0;
     }
 

@@ -165,6 +165,47 @@ public class Sort {
         return i + 1;
     }
 
+    public static int partitionV2(int[] arr, int p, int r) {
+        int i = p;
+        int j = r - 1;
+        int k = arr[r];
+
+        while (i < j) {
+            while (arr[i] < k && i < j) {
+                i++;
+            }
+
+            while (arr[j] > k && i < j) {
+                j--;
+            }
+
+            swap(arr, i, j);
+        }
+        swap(arr, i, r);
+        return i;
+    }
+
+    public static void quicksortV2(int[] arr, int p, int r) {
+        if (p > r) {
+            return;
+        }
+
+        int k = partitionV2(arr, p, r);
+        quicksortV2(arr, p, k - 1);
+        quicksortV2(arr, k + 1, r);
+    }
+
+    public static void testQuicksortV2() {
+        int[] arr = generateRandomArray();
+        printArray(arr);
+        quicksortV2(arr, 0, arr.length - 1);
+        printArray(arr);
+    }
+
+    public static void main(String[] args) {
+        testQuicksortV2();
+    }
+
     /**
      * partition 随机版
      */
