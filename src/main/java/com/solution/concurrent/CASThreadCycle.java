@@ -11,9 +11,9 @@ public class CASThreadCycle {
 
         private final static String[] ALPHABET = {"a", "b", "c"};
 
-        private static AtomicInteger index = new AtomicInteger(0);
+        private static final AtomicInteger index = new AtomicInteger(0);
 
-        private String name;
+        private final String name;
 
         public ThreadPrinter(String name) {
             this.name = name;
