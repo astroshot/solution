@@ -255,7 +255,7 @@ public class LinkNode {
     public static boolean containsRing(LinkNode head) {
         LinkNode fast = head, slow = head;
         boolean isRing = false;
-        if (fast != null) {
+        if (fast != null && fast.getNext() != null) {
             do {
                 fast = fast.getNext().getNext();
                 slow = slow.getNext();

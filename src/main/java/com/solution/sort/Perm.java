@@ -1,5 +1,7 @@
 package com.solution.sort;
 
+import java.util.Arrays;
+
 public class Perm {
 
     protected static void log(String format, Object... args) {
@@ -84,9 +86,7 @@ public class Perm {
     public static void johnsonTrotter(int n) {
         int[] arr = make(n);
         boolean[] left = new boolean[n];
-        for (int i = 0; i < n; i++) {
-            left[i] = true;
-        }
+        Arrays.fill(left, true);
 
         visit(arr);
         int movableIndex = findMovableIndex(arr, left);
